@@ -1,0 +1,96 @@
+@import 'meyer_reset';
+$real-small: 400px;
+$on-palm: 700px;
+$on-laptop: 900px;
+$small-font-size: 1em;
+$medium-font-size: 2em;
+$large-font-size: 3em;
+@mixin media-query($device) {
+  @media screen and (max-width: $device) {
+  @content;
+  }
+}
+html {
+  box-sizing: border-box;
+  font-size: 17px;
+  letter-spacing: 3px;
+  height: 100%;
+}
+
+body {
+ height: 100vh;
+ width: 100vw;
+ box-sizing: border-box;
+ 
+  @include media-query($on-palm) {
+  }
+ @include media-query($real-small) {
+  }
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+
+
+.main-header {
+  width: 100%;
+  height: 30vh;
+  line-height: 30vh;
+  font-size: $large-font-size;
+  color: #fff;
+  background-color: rgba(255,255,255,0.5);
+  display: flex;
+  font-weight: 100;
+  letter-spacing: 4px;
+  @include media-query($on-palm) {
+    font-size: $small-font-size;
+  }
+  justify-content: space-around;
+}
+
+.feature-gif {
+  background-color: rgba(255,255,255,0.5);
+}
+
+.background-gif {
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+  -webkit-filter: blur(4px);
+  filter: blur(4px);
+}
+
+.default-image {
+  height: 100%;
+  width: auto;
+  display: inline-block;
+  @include media-query($on-palm) {
+    width: 30vw;
+    height: auto;
+  }
+
+}
+
+.logo-image {
+  height: 70px;
+  width: auto;
+}
+
+footer {
+  width: 100%;
+  text-align: center;
+}
+
+.content {
+  padding: 0 3vw;
+  p {
+    padding: 10px;
+  }
+}
+
+.copyright {
+  margin-top: 20px;
+  color: grey;
+  font-size: $small-font-size;
+}

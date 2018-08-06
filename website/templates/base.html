@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+{% block google-info %}
+<meta name="google-site-verification" content="" />
+<meta name="description" content="" />
+{% endblock %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="http://localhost:4000/">
+  <link rel="alternate" type="application/rss+xml" title="alphanumbra" href="/feed.xml">
+
+  <link rel="apple-touch-icon" href="{% static '/website/images/icon.png' %}">
+  <link rel="icon" href="{% static '/website/images/icon.png' %}">
+  <link rel="shortcut icon" href="{% static '/website/images/icon.png' %}">
+
+  <link rel="stylesheet" type="text/css" href="{% static '/website/css/main.css' %}">  
+  <title>{% block title %}alphanumbra{% endblock %}</title>
+  <div class="background-gif" style="background-image: url('{% static '/website/images/wave2.gif' %}'); background-size: cover;"></div>
+  <body>
+    <header class="main-header" style="background-image: url('{% static '/website/images/flowers.jpg' %}'); background-size: cover;">
+        <h1>alphanumbra</h1>
+        <img class="default-image feature-gif" src='{% static '/website/images/wave2.gif' %}' />
+    </header>
+    <div class="content">
+        <p>alphanumbra is a brand promoting awareness of the meanings inside and between the names we go by.</p>
+        <p>please follow us on instagram for updates and keep an eye out for new products :).</p>
+    </div>
+
+    <footer>
+        <a href="https://instagram.com/alphanumbra" target="_blank"><img class="logo-image" src="/static/website/images/instagram.svg" /></a>
+
+        <p class="copyright">&copy; 2018</p>
+    </footer>
+
+  </body>
+</html>
