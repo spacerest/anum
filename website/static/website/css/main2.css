@@ -78,7 +78,7 @@ body {
   background-color: rgba(255, 255, 255, 0.5); }
 
 .background-gif {
-  position: absolute;
+  position: fixed;
   height: 100vh;
   width: 100vw;
   z-index: -1;
@@ -112,22 +112,29 @@ footer {
   color: grey;
   font-size: 1em; }
 
-input[type='submit'] {
+input[type='submit'], input {
   background: rgba(255, 255, 255, 0.2);
   border: 1px solid gray;
   font-size: 1em;
-  cursor: pointer;
   color: gray;
   padding: 4px;
   width: 100%; }
 
 input[type='submit']:hover {
+  cursor: pointer;
   color: black;
   border: 1px solid black;
   transition: ease-in-out .2s; }
 
 #loaded {
   opacity: 0;
-  transition: .3s ease-in-out; }
+  transition: opacity 2s ease-in; }
 
-/*# sourceMappingURL=main.css.map */
+form {
+  width: 50%;
+  padding: 15px; }
+
+.content {
+  width: 100%; }
+
+/*# sourceMappingURL=main2.css.map */

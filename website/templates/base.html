@@ -16,19 +16,48 @@
   <link rel="icon" href="{% static '/website/images/icon.png' %}">
   <link rel="shortcut icon" href="{% static '/website/images/icon.png' %}">
 
-  <link rel="stylesheet" type="text/css" href="{% static '/website/css/main.css' %}">  
+  <link rel="stylesheet" type="text/css" href="{% static '/website/css/main2.css' %}">  
   <title>{% block title %}alphanumbra{% endblock %}</title>
   <div class="background-gif" style="background-image: url('{% static '/website/images/wave2.gif' %}'); background-size: cover;"></div>
-  <body>
+  <body onload="document.getElementById('loaded').style.opacity='1'" id={% block loading_id %}"loaded"{% endblock loading_id %}>
+     {% if request.user.is_authenticated %}
+        <a href="/logout/">Logout</a>
+     {% endif %}
     <header class="main-header" style="background-image: url('{% static '/website/images/flowers.jpg' %}'); background-size: cover;">
-        <h1>alphanumbra</h1>
+        <h1>{% block header %}alphanumbra{% endblock header %}</h1>
         <img class="default-image feature-gif" src='{% static '/website/images/wave2.gif' %}' />
     </header>
     <div class="content">
+      {% block content %}
+	{% if request.user.is_authenticated %}
+          {% if section_form %}
+              <form method="POST">
+                  {% csrf_token %}
+                  {{ section_form.as_p }}
+                  <input type="submit" name="submit">
+              </form>
+          {% endif %}
+          {% for section in sections %}
+	    <h2>{{section.title}}</h2>
+            {% if paragraph_form %}
+              <form method="POST" name="paragraph" value="1">
+                  {% csrf_token %}
+                  {{ paragraph_form.as_p }}
+                  <input type="submit" name="submit">
+                  <input type="" name="section" value="{{ section }}" />
+              </form>
+              {% for paragraph in paragraphs %}
+		<p>{{ paragraph.text }}</p>
+              {% endfor %}
+            {% endif %}
+ 
+          {% endfor %}
+     	{% endif %}
+
         <p>alphanumbra is a brand promoting awareness of the meanings inside and between the names we go by.</p>
         <p>please follow us on instagram for updates and keep an eye out for new products :).</p>
     </div>
-
+    {% endblock content %}
     <footer>
         <a href="https://instagram.com/alphanumbra" target="_blank"><img class="logo-image" src="/static/website/images/instagram.svg" /></a>
 
